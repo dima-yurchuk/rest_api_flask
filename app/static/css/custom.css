@@ -1,0 +1,90 @@
+body {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    height: 100%;
+}
+body:before {
+    content: "";
+    position: absolute;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    z-index: -1; /* Keep the background behind the content */
+    height: 20%; width: 20%; /* Using Glen Maddern's trick /via @mente */
+
+    /* don't forget to use the prefixes you need */
+    transform: scale(5);
+    transform-origin: top left;
+    filter: blur(1.5px);
+}
+.info_about_me{
+    color:white;
+    font-size:25px;
+    width:70%;
+    position:absolute;
+    display:inline-block;
+}
+.my_achievement{
+    color:white;
+    font-size:25px;
+    position:absolute;
+    display:inline-block;
+}
+.achievement_img{
+    width:512px;
+    height:512px
+}
+.fon{
+    width:100%;
+}
+.label{
+color:white;
+font-size:25px;
+}
+.errors{
+color:white;
+}
+.flash_message{
+color:white;
+}
+.table_form{
+color:white;
+}
+.href_in_background{
+color: #adddb8;
+}
+.href_in_background:hover {
+color: white;
+}
+
+.form-login{
+    background-color:rgba(197, 217, 226, 0.3);
+    width:25%;
+    height:auto;
+    border-radius:20px;
+    position:absolute;
+    left:35%;
+}
+.form_label{
+    color:white;
+     font-size:25px;
+}
+.error_form{
+    color:#ecb9af;
+}
+.error_form_admin{
+    color:red;
+}
+.account_user{
+    color:white;
+}
+.last_seen{
+    color:#e5ebe8;
+    font-weight:bold;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.note-editable { background-color: white !important; color: black !important; }

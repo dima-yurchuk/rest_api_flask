@@ -1,0 +1,43 @@
+ python3 manage.py db migrate
+ python3 manage.py db upgrade
+
+
+
+
+>>> from app import db
+>>> db
+<SQLAlchemy engine=sqlite:////home/dhouse/project_web_flask/form.db>
+>>> from app.models import Task, Category, Employee
+>>> c1 = Category(name='Test category')
+>>> c1
+<Task None Test category >
+>>> db.session.add(c1)
+>>> db.session.commit()
+>>> t1 = Task(title='Test title', description='Test deescription', category_id=1)
+>>> t1
+<Task None Test title Test deescription None None None 1>
+>>> db.session.add(t1)
+>>> db.session.commit()
+>>> e1 = Employee(name='David', count_of_completed_tasks=1)
+>>> db.session.add(e1)
+>>> db.session.commit()
+>>> t1.employee_backref.append(e1)
+>>> db.session.commit()
+>>> db.session.query(Category.id).filter(Category.name=='Test category').all()
+
+ from app import app, db
+None
+>>> from app.api_restfull.models import Task, Employee
+>>> t1 = Task(title='Test title', description='Test description', priority='low')
+>>> app = create_app()
+None
+>>> app.app_context().push()
+>>> with app.app_context():
+...     t1 = Task(title='Test title', description='Test description', priority='low')
+...     db.session.add(t1)
+...     db.session.commit()
+...
+
+
+
+

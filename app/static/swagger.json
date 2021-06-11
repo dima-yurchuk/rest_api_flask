@@ -1,0 +1,288 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "sean",
+    "version": "1.0.0",
+    "title": "Seans-Python3-Flask-Rest-Boilerplate",
+    "contact": {
+      "email": "seanwasere@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Subject Request",
+      "description": "Example API for requesting and return subject requests"
+    }
+  ],
+  "paths": {
+    "/api/subject": {
+      "get": {
+        "tags": [
+          "Subject Request"
+        ],
+        "summary": "Returns subjectRequests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/subjectRequest"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Subject Request"
+        ],
+        "summary": "Create a new subject request system",
+        "requestBody": {
+          "description": "Subject Request Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/subjectRequestPostBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/api/subject/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the cat that we want to match",
+          "type": "int"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Subject Request"
+        ],
+        "summary": "Subject book request with given ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Subject Request id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/bookRequest"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Subject request not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "edit a subject request by ID",
+        "tags": [
+          "Subject Request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Subject Request id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Subject Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/subjectRequestPostBodyEdit"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/subjectRequest"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete subject Request by ID",
+        "tags": [
+          "Subject Request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Subject Request Id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Subject Request not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "id": {
+        "properties": {
+          "id": {
+            "type": "int"
+          }
+        }
+      },
+      "subjectRequestPostBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "teacher": {
+            "type": "string",
+            "format": "string"
+          },
+          "type": {
+            "type": "string",
+            "format": "string"
+          },
+          "specialty": {
+            "type": "string",
+            "format": "string"
+          },
+          "semester": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+       "subjectRequestPostBodyEdit": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "teacher": {
+            "type": "string",
+            "format": "string"
+          },
+          "type": {
+            "type": "string",
+            "format": "string"
+          },
+           "is_exam": {
+            "type": "string",
+            "format": "string"
+          },
+          "specialty": {
+            "type": "string",
+            "format": "string"
+          },
+          "semester": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "subjectRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "int",
+            "format": "number"
+          },
+         "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "teacher": {
+            "type": "string",
+            "format": "string"
+          },
+          "type": {
+            "type": "string",
+            "format": "string"
+          },
+           "is_exam": {
+            "type": "string",
+            "format": "string"
+          },
+          "specialty": {
+            "type": "string",
+            "format": "string"
+          },
+          "semester": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    }
+  }
+}
